@@ -115,6 +115,7 @@ public class Cliente {
 		result = prime * result + id;
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
+		result = prime * result + ((ventas == null) ? 0 : ventas.hashCode());
 		return result;
 	}
 
@@ -149,6 +150,12 @@ public class Cliente {
 				return false;
 		} else if (!telefono.equals(other.telefono))
 			return false;
+		if (ventas == null) {
+			if (other.ventas != null)
+				return false;
+		} else if (!ventas.equals(other.ventas))
+			return false;
 		return true;
-	}	
+	}
+
 }

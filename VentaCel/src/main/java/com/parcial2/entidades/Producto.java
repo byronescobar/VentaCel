@@ -92,28 +92,6 @@ public class Producto {
 		this.existencia = existencia;
 	}
 
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public Marca getMarca() {
-		return marca;
-	}
-
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
-
-	@Override
-	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", existencia="
-				+ existencia + ", precio=" + precio + ", marca=" + marca + "]";
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -160,5 +138,29 @@ public class Producto {
 		if (Double.doubleToLongBits(precio) != Double.doubleToLongBits(other.precio))
 			return false;
 		return true;
-	}	
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", existencia="
+				+ existencia + ", precio=" + precio + ", marca=" + marca + "]";
+	}
+
+	
 }
