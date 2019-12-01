@@ -7,4 +7,5 @@ import com.parcial2.entidades.Producto;
 @Repository
 public interface RepoProducto extends JpaRepository<Producto,Integer> {
 
+	
 }

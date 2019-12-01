@@ -7,4 +7,5 @@ import com.parcial2.entidades.Marca;
 @Repository
 public interface RepoMarca extends JpaRepository<Marca,Integer>{
 
+	
 }

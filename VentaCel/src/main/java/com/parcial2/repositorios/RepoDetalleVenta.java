@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.parcial2.entidades.DetalleVenta;
 @Repository
-public interface RepoDetalleVetnta extends JpaRepository<DetalleVenta,Integer> {
+public interface RepoDetalleVenta extends JpaRepository<DetalleVenta,Integer> {
 
 }
