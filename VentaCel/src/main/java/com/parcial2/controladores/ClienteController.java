@@ -1,8 +1,11 @@
 package com.parcial2.controladores;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +25,16 @@ public class ClienteController {
 	RepoCliente repoCliente;
 	@Autowired
 	RepoVenta repoVenta;
-
-	@GetMapping("/cliente") // Ruta listado
+	
+	@RequestMapping(value="/index")
+	public String inicio2() {
+		return "index";
+		}
+	
+	@GetMapping("/cli") // Ruta listado
 	public String listado(Model model) {
 		model.addAttribute("clientes", repoCliente.findAll());
-		return "index";
+		return "inicioC";
 	}
 
 	@GetMapping(value = "/registro") // Ruta nuevo
@@ -35,14 +43,15 @@ public class ClienteController {
 	}
 
 	@PostMapping(value = "/registrar") // Ruta registrar
-	public String registrar(@ModelAttribute("cliente") Cliente c, RedirectAttributes flash) {
-		if (c.getId() > 0) {
+	public String registrar(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result, RedirectAttributes flash) {
+		if (cliente.getId() > 0) {
 			flash.addFlashAttribute("exito", "Cliente Actualizado con éxito");
 		} else {
 			flash.addFlashAttribute("warning", "Guardado Cliente...");
 		}
-		repoCliente.save(c);
-		return "redirect:/cliente";
+		repoCliente.save(cliente);
+		return "redirect:/cli";
+		
 	}
 
 	@GetMapping(value = "/editar/{id}")
