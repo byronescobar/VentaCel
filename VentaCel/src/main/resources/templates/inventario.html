@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Parcial3</title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="/css/css/bootstrap.min.css"/>
+		<link type="text/css" rel="stylesheet" href="/css/css/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="/css/css/slick-theme.css"/>
+		<link type="text/css" rel="stylesheet" href="/css/css/nouislider.min.css"/>
+		<link rel="stylesheet" href="/css/css/font-awesome.min.css">
+		<link type="text/css" rel="stylesheet" href="/css/css/style.css"/>
+
+    </head>
+	<body style="background-image: url(/img/m.jpg); background-position: center center;
+	 background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+		<header>
+			
+			<div id="top-header">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i> +503 72772277</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> ventacel@gmail.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> Chalatenango, Chalatenango, El Salvador</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+						<li><a href="#"><i class="fa fa-user-o"></i> Cerrar Sesion</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="header">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<!-- LOGO -->
+						<div class="col-md-3">
+							
+						</div>
+						<!-- /LOGO -->
+
+						<!-- SEARCH BAR -->
+						<div class="col-md-8">
+							<!-- NAVIGATION -->
+							<nav id="navigation">
+								<!-- container -->
+								<div class="container">
+									<!-- responsive-nav -->
+									<div id="responsive-nav">
+										<!-- NAV -->
+										<nav class="menu">
+										<ul class="main-nav nav navbar-nav">
+											<li class="active"><a href="/index">Inicio</a></li>
+											<li class="submenu">
+									            <a href="#"><span class=" icon-user-tie"></span>Informacion de Cliente<span class="carete icon-circle-down"></span></a>
+									            <ul class="children">
+									              <li>
+									                  <a href="/registro" onclick="" onkeypress=""><span class="icon-user"></span> Registro de Cliente</a>
+									              </li>
+									              <li>
+									                  <a href="/cliente" onclick="" onkeypress=""><span class="icon-user"></span> Listado de Cliente</a>
+									              </li>
+									            </ul>
+									       	</li>
+											<li class="submenu">
+									            <a href="#"><span class=" icon-user-tie"></span>Inventario<span class="carete icon-circle-down"></span></a>
+									            <ul class="children">
+									              <li>
+									                  <a href="/registroP" onclick="" onkeypress=""><span class="icon-user"></span> Registro de producto</a>
+									              </li>
+									              <li>
+									                  <a href="/inventarioI" onclick="" onkeypress=""><span class="icon-user"></span> Inventario</a>
+									              </li>
+									            </ul>
+									       	</li>
+											<li><a href="/registrodetventa">Generar Venta</a></li>
+										</ul>
+										</nav>
+										<!-- /NAV -->
+									</div>
+									<!-- /responsive-nav -->
+								</div>
+								<!-- /container -->
+							</nav>
+							<!-- /NAVIGATION -->
+						</div>
+						<!-- /SEARCH BAR -->
+					</div>
+					<!-- row -->
+				</div>
+				<!-- container -->
+			</div>
+			<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="text-center" style="color:white;">Registro de Inventario</h1>
+				<a href="/index" class="btn btn-success" style="background-color:#1abc9c;">Volver al inicio</a>
+				<span style="color: yellow; font-size:15px;" class="required_notification">* Datos requeridos</span>
+				<hr>
+				
+				<form method="post" name="inventario" action="/registrarinv" >
+					<div class="form-group row">
+					<div class="col-sm-10">
+							<input type="hidden" class="form-control"name="idp" th:value="${producto.id}" id="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="" class="col-sm-2 form-control-label" style="color:white;">Cantidad de producto:</label>
+						<div class="col-sm-10">
+							<input type="text"  name="cantidad" placeholder="Cantidad de producto" class="form-control" id="" title="Solo se permiten numeros."  required pattern="[0-9]+">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="" class="col-sm-2 form-control-label" style="color:white;">Precio del producto:</label>
+						<div class="col-sm-10">
+							<input type="text"  name="precio" placeholder="Precio del producto" class="form-control" id="" title="Solo se permiten numeros."  required> <!-- pattern="[0-9]+"-->
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-success" style="background-color:#21618c;">Registrar Inventario</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

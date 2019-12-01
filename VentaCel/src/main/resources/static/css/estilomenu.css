@@ -1,0 +1,170 @@
+*{
+	padding: 0;
+	margin:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/*.carete{
+	background-color: white;
+}*/
+body{background: #fefefe;}
+
+.menu_bar{
+	display: none;
+}
+header{
+	position: relative;/*Aqui he agregado una posision relativa para que me pueda funcionar con dispositivos moviles de lo contrario no nos funcionnara*/
+	width: 100%;
+	z-index: 1000;
+}
+header nav{
+	background: #023859;
+	z-index:1000;
+	max-width: 200000px;
+	width: 100%;
+	margin: 0px auto;
+}
+/*El header nav ul de abajo lo ocupamos para desaparacer los puntos de la lista*/
+header nav ul{
+	list-style: none;
+}
+header nav ul li{
+	display: inline-block;
+	position: relative;/*se coloca esta posicion para cuando tengamos un menu desplegable*/
+}
+/*Aplicando el elemento hover al li*/
+header nav ul li:hover{
+	background:#5F9EA0;
+}
+
+header nav ul li a{
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	padding: 12px;/*Con esta propiedad asignamos el valor para cada uno de los  a osea que aqui decidimos si lo queremos mas ancho o delgado*/
+}
+header nav ul li a span{
+	margin-right:10px; 
+}
+
+/*...Lo que va a hacerce con esta parte es que cuando pasemos el mouse arriba del elemen-
+to li las clases children que esten dentro se van a  mostrar*/
+header nav ul li:hover .children{
+	display:block;
+}
+/*...lo que se va a hacer con esta parte es ocultar todos los items de la lista desplegable del 
+elemento Proyecto*/
+/*NOTA IMPORTANTE DEL PORQUE PONER POSITION ABSULUTE*/
+/*Bueno la propiedad position:absoute se coloca siempre cuando estamos haciendo un submenu 
+donde los elementos padres van con la propiedad position:relaitve y los elemntos hijos
+que en este caso es una clase llamada: children;  van con la propiedad position: absulute;*/
+header nav ul li .children{
+	display: none;
+	background:#0e5061;
+	position: absolute;/*aqui ponenos position:absolute porque los elementos hihos: en este caso children dependen de los padres y los padres tiene tienen que tener un position:relative*/
+	width: 150%;
+	z-index: 1000;
+}
+header nav ul li .children li{
+	display: block;
+	overflow: hidden;
+	border-bottom: 1px solid rgb(255,2552,255,.5)
+}
+header nav ul li .children li a{
+	display: block;
+	}
+	/*ESTA PARTE LA HE QUITADO PORQUE LOS ICONOS LOS QUIERO IGUAL QUE LOS DEL MENU PRINCIPAL*/
+	/*header nav ul li .children li a span{
+		float:right;
+		position: absolute;
+		top: 3px;
+		margin-right: 0px;
+		margin-left: 10px;
+	}*/
+	/* ...Aqui separamos un poco  el caret icon que agregamos al ul llamdoicon-circle-down: Proyecto;  */
+	header nav ul li .carete{
+		position: relative;
+		top: 3px;
+		margin-right: 0px;
+		margin-left: 10px;
+	}
+	/*...Utilizando Media Querys para poder modificar tolo lo que querramos cuando este en version par moviles*/
+	@media screen and (max-width:800px){
+		body{
+			padding-top: 80px;
+		}
+		.menu_bar {
+			display: block;
+			width: 100%;
+			position: fixed;
+			top: 0;
+			background: #174459;/*...color del fondo de nuestro boton de navegacion para moviles*/
+		}
+
+		.menu_bar .bt-menu{
+			display: block;
+			padding: 5px;
+			color: #fff;
+			overflow: hidden;
+			font-size: 20px;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		.menu_bar span{
+			float:right;
+			font-size: 20px;/*tamaño del icono del menu*/
+			margin-right: 25px;
+			margin-top: 5px;
+		}
+
+		header nav{
+			width: 80%;
+			height: calc(100% - 35px);
+			position: fixed;
+			right: 100%;
+			margin: -42px 0px 0px 0px;/*Aqui he modificado para poder hacerlo que la parte deslizable hacia un lado  llege ha estar pegado con el btn menu*/
+			overflow: scroll;
+		}
+		header nav ul li {
+			display: block;/*para que abarquen un 100% de ancho*/
+			border-bottom: 1px solid #ffffff;
+		}
+		header nav ul li a{
+			display: block;/*para que abarquen un 100% de ancho*/
+			padding: 10px
+		}
+		header nav ul li:hover .children{/*esta parte nos sirve para cuado estamos en un dispositivo movil al situar el cursor sobre el elemento desplegable tengamos que dar un click para poder obtener las otras opciones del sub-menu*/
+			display: none;
+		}
+		header nav ul li .children{
+			width: 100%;
+			position:relative;
+		}
+		header nav ul li .children li a{
+			margin-left: 20px;
+		}
+			header  nav ul li .carete{
+			float: right;
+		}
+	}
+	div.contenido{
+		width: 100%;
+	}
+	header nav ul li .children a:hover{
+		color: white;
+	}
+	/*Clase para hacer que nuestro menu de navegacion sea pegagoso o se ancle a la parte de arriba de nuestra pagina y que ademas solo fucionara 
+	cuando se de un scroll y este en patallas mallores a 800px o como minimo de una resolucion menos no pasara nada*/
+@media screen and (min-width:800px){
+	.menu-fixed{
+		position: fixed;
+		z-index: 1000;
+		top: 0;
+		width: 100%;
+		max-width: 2000px;
+		box-shadow: 5px 5px 8px white;
+	}
+}
