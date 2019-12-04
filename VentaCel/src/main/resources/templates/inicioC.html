@@ -99,11 +99,11 @@
 					style="background-color: gray;">
 					<thead>
 						<tr>
-							<th style="color: white;">ID</th>
-							<th style="color: white;">Nombre</th>
-							<th style="color: white;">Apellido</th>
-							<th style="color: white;">Telefono</th>
-							<th style="color: white;">Direccion</th>
+							<th style="color: black;">ID</th>
+							<th style="color: black;">NOMBRE</th>
+							<th style="color: black;">APELLIDO</th>
+							<th style="color: black;">TELEFONO</th>
+							<th style="color: black;">DIRECCION</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -114,7 +114,7 @@
 							<td style="color: white;" th:text="${cliente.apellido}"></td>
 							<td style="color: white;" th:text="${cliente.telefono}"></td>
 							<td style="color: white;" th:text="${cliente.direccion}"></td>
-							<td><a th:href="@{'editarCliente/' + ${cliente.id}}"
+							<td><a th:href="@{'/cliente/editar' + ${cliente.id}}"
 								class="btn btn-info">Editar</a></td>
 						</tr>
 					</tbody>

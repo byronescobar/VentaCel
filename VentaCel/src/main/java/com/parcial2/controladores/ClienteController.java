@@ -26,11 +26,6 @@ public class ClienteController {
 	@Autowired
 	RepoVenta repoVenta;
 	
-	@RequestMapping(value="/index")
-	public String inicio2() {
-		return "index";
-		}
-	
 	@GetMapping("/cli") // Ruta listado
 	public String listado(Model model) {
 		model.addAttribute("clientes", repoCliente.findAll());
@@ -44,22 +39,24 @@ public class ClienteController {
 
 	@PostMapping(value = "/registrar") // Ruta registrar
 	public String registrar(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result, RedirectAttributes flash) {
-		if (cliente.getId() > 0) {
-			flash.addFlashAttribute("exito", "Cliente Actualizado con éxito");
-		} else {
-			flash.addFlashAttribute("warning", "Guardado Cliente...");
+		if(cliente.getId()>0) {
+			flash.addFlashAttribute("exito","Cliente Actualizado con éxito");
+		}else {
+			flash.addFlashAttribute("warning","Guardando Cliente...");
 		}
 		repoCliente.save(cliente);
-		return "redirect:/cli";
-		
+		return "redirect:/cliente/cli";	
 	}
-
-	@GetMapping(value = "/editar/{id}")
+	
+	@GetMapping(value = "/editar/{id}")  //Ruta Editar
 	public String editar(@PathVariable(value = "id") int id, Model model) {
-		Cliente c = new Cliente();
-		c = repoCliente.getOne(id);
-		model.addAttribute("cliente", c);
+		model.addAttribute("cliente", repoCliente.findById(id));
 		return "actualizarC";
 	}
-
+	
+	@PostMapping("/actualizar") // Ruta Actualizar
+	public String actualizar(@Valid @ModelAttribute("cliente")Cliente cliente,BindingResult result ) {
+		repoCliente.save(cliente);
+		return "redirect:/cliente/cli";
+	}
 }
