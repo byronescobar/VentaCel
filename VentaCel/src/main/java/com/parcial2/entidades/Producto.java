@@ -42,7 +42,8 @@ public class Producto {
 	public Producto() {
 	}
 
-	public Producto(int id, @NotEmpty String nombre, @NotEmpty String descripcion, @NotEmpty int existencia, @NotEmpty double precio, Marca marca) {
+	public Producto(int id, @NotEmpty String nombre, @NotEmpty String descripcion, @NotEmpty int existencia,
+			@NotEmpty double precio, Marca marca) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -50,15 +51,15 @@ public class Producto {
 		this.precio = precio;
 		this.marca = marca;
 	}
-
-	public Producto(@NotEmpty String nombre, @NotEmpty String descripcion, @NotEmpty int existencia, @NotEmpty double precio, Marca marca) {
+	
+	public Producto(@NotEmpty String nombre, @NotEmpty String descripcion, @NotEmpty int existencia,
+			@NotEmpty double precio, Marca marca) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.existencia = existencia;
 		this.precio = precio;
 		this.marca = marca;
 	}
-
 
 	public int getId() {
 		return id;
@@ -83,13 +84,29 @@ public class Producto {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
 	public int getExistencia() {
 		return existencia;
 	}
 
 	public void setExistencia(int existencia) {
 		this.existencia = existencia;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
 	}
 
 	@Override
@@ -140,27 +157,12 @@ public class Producto {
 		return true;
 	}
 
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public Marca getMarca() {
-		return marca;
-	}
-
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
-
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", existencia="
 				+ existencia + ", precio=" + precio + ", marca=" + marca + "]";
 	}
-
 	
+	
+
 }

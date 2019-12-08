@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +17,14 @@
 <link rel="stylesheet" href="/css/css/font-awesome.min.css">
 <link type="text/css" rel="stylesheet" href="/css/css/style.css" />
 
+<!-- FROALA EDITOR WYSIWYG-->
+<link
+	href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css"
+	rel="stylesheet" type="text/css" />
+
+
 </head>
+
 <body
 	style="background-image: url(/img/m.jpg); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
 	<header>
@@ -25,7 +33,7 @@
 				<ul class="header-links pull-left">
 					<li><a href="#"><i class="fa fa-phone"></i> +503 72772277</a></li>
 					<li><a href="#"><i class="fa fa-envelope-o"></i>
-							SmartShop@gmail.com</a></li>
+							ventacel@gmail.com</a></li>
 					<li><a href="#"><i class="fa fa-map-marker"></i>
 							Chalatenango, Chalatenango, El Salvador</a></li>
 				</ul>
@@ -59,10 +67,11 @@
 													class=" icon-user-tie"></span>Información de producto<span
 													class="carete icon-circle-down"></span></a>
 												<ul class="children">
-													<li><a href="producto/registroP" onclick="" onkeypress=""><span
-															class="icon-user"></span> Registro de producto</a></li>
-													<li><a href="producto/pro" onclick="" onkeypress=""><span
-															class="icon-user"></span> Listado de productos</a></li>
+													<li><a href="/producto/registroP" onclick=""
+														onkeypress=""><span class="icon-user"></span> Registro
+															de producto</a></li>
+													<li><a href="/producto/pro" onclick="" onkeypress=""><span
+															class="icon-user"></span>Listado de productos</a></li>
 												</ul></li>
 											<li><a href="#">Generar Venta</a></li>
 										</ul>
@@ -78,55 +87,70 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="text-center" style="color: cyan">Editar cliente</h1>
-				<a href="/registroC" class="btn btn-success">Volver al
-					registro</a>
+				<br> <br>
+				<h1 class="text-center" style="color: black;">Registro de
+					Producto</h1>
 				<hr>
-				<form method="post" action="/cliente/registrar"
-					modelAttribute="cliente">
-					<input type="hidden" name="id" th:value="${cliente.id}" />
+				<form method="post" action="/producto/registrarP"
+					modelAttribute="producto">
 					<div class="form-group row">
 						<label for="" class="col-sm-2 form-control-label"
 							style="color: black;">Nombre</label>
 						<div class="col-sm-10">
-							<input type="text" name="nombre" th:value="${cliente.nombre}"
-								class="form-control" id="">
+							<input type="text" name="nombre" placeholder=""
+								class="form-control" id=""
+								title="Solo se permiten numeros y letras." th:required
+								pattern="[A-Za-z0-9- ]+">
 						</div>
 					</div>
 
 					<div class="form-group row">
 						<label for="" class="col-sm-2 form-control-label"
-							style="color: black;">Apellido</label>
-						<div class="col-sm-10">
-							<input type="text" name="apellido" th:value="${cliente.apellido}"
-								class="form-control" id="">
-						</div>
-					</div>
-
-
-					<div class="form-group row">
-						<label for="" class="col-sm-2 form-control-label"
-							style="color: black;">Telefono</label>
-						<div class="col-sm-10">
-							<input type="text" name="telefono" th:value="${cliente.telefono}"
-								class="form-control" id="" placeholder="00000000">
+							style="color: black;">Descripción</label>
+						<div id="froala" class="col-sm-10">
+							<script type="text/javascript"
+								src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+							<script type="text/javascript">
+								new FroalaEditor('#froala');
+							</script>
 						</div>
 					</div>
 
 					<div class="form-group row">
 						<label for="" class="col-sm-2 form-control-label"
-							style="color: black;">Direccion</label>
+							style="color: black;">Cantidad</label>
 						<div class="col-sm-10">
-							<input type="text" name="direccion"
-								th:value="${cliente.direccion}" class="form-control" id="">
+							<input type="number" name="existencia" placeholder="00"
+								class="form-control" id="" title="Solo se permiten numeros"
+								pattern="[0-9]+">
 						</div>
 					</div>
 
+					<div class="form-group row">
+						<label for="" class="col-sm-2 form-control-label"
+							style="color: black;">Precio</label>
+						<div class="col-sm-10">
+							<input type="number" name="precio" placeholder="$00.00"
+								class="form-control" id="" title="Solo se permiten numeros"
+								th:required pattern="[0-9]+">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="" class="col-sm-2 form-control-label"
+							style="color: black;">Marca</label>
+						<div class="col-sm-10">
+							<select name="marca" class="mdb-select md-form">
+								<option value="" disabled selected>Elige una opción</option>
+								<option th:each="m:${marca}" th:text="${m.nombre}"
+									th:value="${m.id}" th:required></option>
+							</select> <a href="/marca/registroM" class="btn btn-primary"
+								style="color: black;">Nueva marca</a>
+						</div>
+					</div>
 					<div class="form-group row">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-success">
-								Actualizar</button>
-
+							<button type="submit" class="btn btn-success">Registrar</button>
 						</div>
 					</div>
 				</form>
